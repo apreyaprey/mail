@@ -28,6 +28,7 @@ function compose_email() {
   document.querySelector("#compose-recipients").value = "";
   document.querySelector("#compose-subject").value = "";
   document.querySelector("#compose-body").value = "";
+  document.querySelector("#compose-recipients").disabled=false;
 }
 
 function send_email(event) {
@@ -127,7 +128,7 @@ function view_email(id, mailbox) {
         let timestamp=email['timestamp'];
         let sender=email['sender'];
         recep.disabled=true;
-        recep.value=email['recipients'];
+        recep.value=email['sender'];
         if(subject.split(" ",1)!="Re:"){
           console.log(subject.split(" ",1));
           subject="Re: "+subject;
