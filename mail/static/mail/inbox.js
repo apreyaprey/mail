@@ -121,7 +121,11 @@ function view_email(id, mailbox) {
         compose_email("inbox");
         let recep = document.querySelector("#compose-recipients");
         let subj=document.querySelector("#compose-subject");
-        subject=email['subject'];
+        let bod=document.querySelector("#compose-body");
+        let subject=email['subject'];
+        let body=email['body'];
+        let timestamp=email['timestamp'];
+        let sender=email['sender'];
         recep.disabled=true;
         recep.value=email['recipients'];
         if(subject.split(" ",1)!="Re:"){
@@ -129,6 +133,8 @@ function view_email(id, mailbox) {
           subject="Re: "+subject;
         }
         subj.value=subject;
+        bod.value=`On: ${timestamp}, ${sender} Wrote: ${body}
+        `;
       })
       email_content.appendChild(button);
     });
